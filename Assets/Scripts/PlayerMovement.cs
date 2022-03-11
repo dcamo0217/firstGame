@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
     private bool _isJumping = false;
     private bool _onTheGrass = false;
 
+    private SpriteRenderer _renderer;
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Grass")
@@ -30,6 +33,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        _renderer = GetComponent<SpriteRenderer>();
+        if (_renderer == null)
+        {
+            Debug.LogError("Player Sprite is missing a renderer");
+        }
         _rigidbody2D = this.GetComponent<Rigidbody2D>();
     }
 
@@ -41,12 +49,20 @@ public class PlayerMovement : MonoBehaviour
         {
             _isJumping = true;
         }
+        if (Input.GetAxisRaw("Horizontal") > 0)
+        {
+            _renderer.flipX = false;
+        }
+        else if (Input.GetAxisRaw("Horizontal") < 0)
+        {
+            _renderer.flipX = true;
+        }
     }
 
     private void FixedUpdate()
     {
-        PlayerAnimator.SetFloat("Speed", _horizontal > 0 ? _horizontal : 0, 0, 0);
-        transform.position += new Vector3(_horizontal > 0 ? _horizontal: 0, 0, 0) * Time.fixedDeltaTime * Speed;
+        PlayerAnimator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
+        transform.position += new Vector3(_horizontal, 0, 0) * Time.fixedDeltaTime * Speed;
 
         if (_isJumping)
         {
