@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Grass" )
         {
             _onTheGrass = true;
+            Debug.Log("onGrass");
         }
         if(collision.gameObject.tag == "Enemy"){
             //Destroy(gameObject);
@@ -40,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Grass")
         {
             _onTheGrass = false;
-
+            Debug.Log("offGrass");
             
         }
 
@@ -68,13 +69,11 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        if (Input.GetButton("Jump") && _onTheGrass == true )
+        
+        if (Input.GetButton("Jump")  )
         {
-            _isJumping = true;
-        }
-        if (Input.GetButton("Jump") && _onTheGrass == false  )
-        {
-            _isJumping = false;
+            _isJumping = _onTheGrass;
+
         }
 
         if (Input.GetAxisRaw("Horizontal") > 0)
