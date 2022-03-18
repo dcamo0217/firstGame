@@ -17,7 +17,11 @@ public class ScoreManager : MonoBehaviour
 
     public void ChangeScore(int coinValue) {
         score += coinValue;
-        text.text = "X" + score.ToString();
+        text.text = "X" + score.ToString() +"/11";
+    }
+     public void Ganaste(string AVISO) {
+        
+        text.text = "Ganaste";
     }
     // Update is called once per frame
     void Update()

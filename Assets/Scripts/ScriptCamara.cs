@@ -9,6 +9,9 @@ public class ScriptCamara : MonoBehaviour
     private Vector3 TargetPos;
     //private float Adelante;
 
+    public float cammov;
+    public PlayerMovement player;
+
     void Start()
     {
         
@@ -17,9 +20,9 @@ public class ScriptCamara : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TargetPos=transform.position=new Vector3(Target.transform.position.x+1,Target.transform.position.y+2,transform.position.z);
+        TargetPos=transform.position=new Vector3(Target.transform.position.x,Target.transform.position.y+2,transform.position.z);
 
-
+        
 
     }
 

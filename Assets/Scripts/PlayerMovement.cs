@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerMovement : MonoBehaviour
 {   
     public float vista;
@@ -19,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     
     private SpriteRenderer _renderer;
 
-
+  
 
     private async void OnCollisionEnter2D(Collision2D collision)
     {
@@ -91,8 +92,13 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("coin")) 
         {
             Destroy(other.gameObject);
+        }else
+         if (other.gameObject.CompareTag("Finish")) 
+        {
+            Destroy(other.gameObject);
         }
     }
+    
 
     private void FixedUpdate()
     {
