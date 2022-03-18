@@ -8,6 +8,8 @@ public class SierraDeAtaque : MonoBehaviour
     private float posisionx;
     private float posisiony;
 
+    public float velocidad;
+
         private Rigidbody2D _rigidbody2D;
     void Start()
     {
@@ -27,7 +29,7 @@ public class SierraDeAtaque : MonoBehaviour
 
     void Update()
     {
-        gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-8f * Time.deltaTime,0));
+        gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(velocidad * Time.deltaTime,0));
     }
 }
 
