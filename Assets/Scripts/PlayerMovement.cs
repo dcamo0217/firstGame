@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Update()
-    {
+    {       
         _horizontal = Input.GetAxis("Horizontal");
 
         if(Input.GetButtonDown("Jump") && _isJumping==false && _onTheGrass==false && DobleSalto==true){
@@ -83,6 +83,14 @@ public class PlayerMovement : MonoBehaviour
         else if (Input.GetAxisRaw("Horizontal") < 0)
         {
             _renderer.flipX = true;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("coin")) 
+        {
+            Destroy(other.gameObject);
         }
     }
 
