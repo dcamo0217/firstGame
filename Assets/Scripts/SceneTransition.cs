@@ -8,7 +8,7 @@ public class SceneTransition : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("player") && !other.isTrigger) {
+        if (other.CompareTag("Player") && !other.isTrigger) {
             SceneManager.LoadScene(sceneToLoad);
         }
     }
